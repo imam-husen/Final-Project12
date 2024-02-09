@@ -12,10 +12,23 @@ class CategoriesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $category = Categories::all();
-        return view('categories.index',["category" =>$category]);
+        $category = Categories::paginate(5);
+        
+        
+        $search = $request->input('search');
+
+        // Mengecek apakah ada parameter pencarian
+        if ($search) {
+            // Melakukan pencarian berdasarkan nama kategori
+            $category = Categories::where('nama', 'like', '%' . $search . '%')->paginate(5);
+        } else {
+            // Jika tidak ada parameter pencarian, tampilkan semua data
+            
+        }
+
+        return view('categories.index', ['category' => $category, 'search' => $search]);
     }
 
     /**
