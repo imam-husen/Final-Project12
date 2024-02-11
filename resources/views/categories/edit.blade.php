@@ -2,6 +2,7 @@
 @section('judul','Update Categories')
 
 @section('content')
+
 <form action="/categories/{{ $categoriesbyId->id }}" method="POST">
     @method('put')
   @csrf

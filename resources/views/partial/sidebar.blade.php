@@ -9,14 +9,56 @@
                 <img class="rounded-circle" src="{{ asset('template/img/user.jpg') }}" alt="" style="width: 40px; height: 40px;">
                 <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
             </div>
+            
+            @auth
             <div class="ms-3">
-                <h6 class="mb-0">Jhon Doe</h6>
-                <span>Admin</span>
+                <h6 class="mb-0">{{ Auth::user()->name }}</h6>
+                
             </div>
+            @endauth
+
+            @guest
+            <div class="ms-3">
+                <h6 class="mb-0">Belum Login</h6>
+                
+            </div>
+            @endguest
+            
         </div>
         <div class="navbar-nav w-100">
-            <a href="/" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+            <a href="/pertanyaan" class="nav-item nav-link"><i class="fa fa-file-alt me-2"></i>Tanya Jawab</a>
+           
+            @auth
             <a href="/categories" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Categories</a>
+            <a href="/profile" class="nav-item nav-link"><i class="fa fa-user-alt me-2"></i>Profile</a>
+            @endauth
+            
+
+            @guest
+               <div class="droopdown-divider"></div>
+                <a href="/login" class="nav-link">
+
+                    <p>Login</p>
+                
+                </a>
+            
+            @endguest
+
+            @auth
+                <!-- Logout dropdown -->
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="{{ route('logout') }}"
+               onclick="event.preventDefault();
+                             document.getElementById('logout-form').submit();">
+                Logout
+            </a>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                @csrf
+            </form>
+
+            
+            @endauth
+            
 
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Elements</a>

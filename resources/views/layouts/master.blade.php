@@ -29,6 +29,29 @@
 
     <!-- Template Stylesheet -->
     <link href="{{ asset('template/css/style.css') }}" rel="stylesheet">
+
+    <!-- Custom Stylesheet for Sticky Footer -->
+   
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+        }
+    
+        .custom-content-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+        }
+    
+        footer {
+            margin-top: auto;
+        }
+    </style>
 </head>
 
 <body>
@@ -40,29 +63,30 @@
     @include('partial.sidebar')
     <!-- /.sidebar -->
 
-    <!-- Blank Start -->
-    <div class="container-fluid pt-4 px-4 ">
-        <div class="row vh-100 bg-light rounded  mx-0 my-3">
-            <div class="col-md-6 my-2">
-                <h3>@yield('judul')</h3>
-                @yield('content')
-            </div>
+    <!-- Main Content -->
+    
+        <div class="custom-content container">
+            <h3>@yield('judul')</h3>
+            @yield('content')
         </div>
-    </div>
-    <!-- Blank End -->
+    
+    <!-- End Main Content -->
 
     <!-- Footer Start -->
-    <footer class="main-footer">
-        <div class="float-right d-none d-sm-block">
-            
-        <b>&copy; <a href="#">Your Site Name</a>, All Right Reserved. </b>
+    <footer>
+        <div class="container-fluid pt-4 px-4">
+            <div class="bg-light rounded-top p-4">
+                <div class="row">
+                    <div class="col-12 col-sm-6 text-center text-sm-start">
+                        &copy; <a href="#">Your Site Name</a>, All Right Reserved.
+                    </div>
+                    <div class="col-12 col-sm-6 text-center text-sm-end">
+                        Designed By <a href="https://htmlcodex.com">HTML Codex</a>
+                    </div>
+                </div>
+            </div>
         </div>
-        
-        <strong>Designed By <a href="https://htmlcodex.com">HTML Codex</a></strong>                
-
-        
     </footer>
-    
     <!-- Footer End -->
 
     <!-- Back to Top -->

@@ -2,7 +2,10 @@
 @section('judul',' Categories')
 
 @section('content')
-
+<div class="container-fluid pt-4 px-4">
+  <div class="row g-7">
+      <div class="col-sm-19 col-xl-9">
+          <div class="bg-light rounded h-100 p-4">
 
 <a href="/categories/create" class="btn btn-primary btn-sm my-2">Tambah Categories</a>
 
@@ -46,10 +49,16 @@
       </tr>
        
     @empty
-        <td>Daftar Data Cast Kosong</td>
+        <td>Daftar Data Categories Kosong</td>
     @endforelse
     
   </table>
   {{ $category->links() }}
+
+          </div>
+      </div>
+  </div>
+</div>
+
 
 @endsection
