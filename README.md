@@ -1,6 +1,6 @@
 # Final Project
 
-<<<<<<< HEAD
+
 # Kelompok 12
 
 # Anggota Kelompok
@@ -8,7 +8,6 @@
 Imam Husen(@imam-husen)
 Larashati Krisyani(@elka1309)
 Abeng Andika Putra(@abengAP)
-=======
 
 
 # Tema Project
