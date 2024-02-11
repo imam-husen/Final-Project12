@@ -50,4 +50,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(Pertanyaan::class,'users_id');
     }
+
+    public function jawaban()
+    {
+        return $this->hasMany(Jawaban::class, 'users_id');
+    }
+
 }

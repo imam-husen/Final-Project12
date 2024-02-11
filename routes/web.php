@@ -31,7 +31,8 @@ Route::resource('categories', CategoriesController::class);
 Route::resource('profile',ProfileController::class)->only('index','update');
 
 //jawaban
-Route::resource('/jawaban{ $pertanyaan_id}', CategoriesController::class);
+//Route::resource('/jawaban{ $pertanyaan_id}', CategoriesController::class);
+Route::resource('jawaban', JawabanController::class);
 
 });
 
@@ -39,6 +40,10 @@ Route::resource('/jawaban{ $pertanyaan_id}', CategoriesController::class);
 
 //CRUD Pertanyaan
 Route::resource('pertanyaan', PertanyaanController::class);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Auth::routes();
 
