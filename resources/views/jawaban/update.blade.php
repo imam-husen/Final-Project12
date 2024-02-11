@@ -1,19 +1,6 @@
 @extends('layouts.master')
 @section('judul',' Jawaban')
 
-{{-- @push('scripts')
-<script src="https://cdn.tiny.cloud/1/pb39zbievsbpi66gbhsbo3z5qvbdwk91raxpxr8ck0n9kduq/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
-<script>
-  tinymce.init({
-    selector: 'textarea',
-    plugins: 'a11ychecker advcode casechange export formatpainter image editimage linkchecker autolink lists checklist media mediaembed pageembed permanentpen powerpaste table advtable tableofcontents tinycomments tinymcespellchecker',
-    toolbar: 'a11ycheck addcomment showcomments casechange checklist code export formatpainter image editimage pageembed permanentpen table tableofcontents',
-    toolbar_mode: 'floating',
-    tinycomments_mode: 'embedded',
-    tinycomments_author: 'Author name',
-  });
-</script>
-@endpush --}}
 @section('content')
 <div class="col-12 grid-margin stretch-card">
     <div class="card">
@@ -27,7 +14,7 @@
         @method('put')
         <input type="hidden" value="{{$jawaban->pertanyaan->id}}" name="pertanyaan_id" >
         <div class="form-group">
-            <textarea type="text" class="form-control" name="jawaban" placeholder="Masukkan jawaban anda">{{old('jawaban', $jawaban->jawaban)}}</textarea>
+            <textarea type="text" class="form-control" name="jawaban" id="ckeditor" placeholder="Masukkan jawaban anda">{{old('jawaban', $jawaban->jawaban)}}</textarea>
             @error('jawaban')
                 <div class="alert alert-danger">
                     {{ $message }}
@@ -46,6 +33,79 @@
         <button type="submit" class="btn btn-primary">Update Jawaban</button>
     </form>
 </div>
-    </div>
+</div>
 </div>
 @endsection
+
+@push('scripts')
+<script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js"></script>
+  <script>
+    ClassicEditor
+      .create(document.querySelector('#ckeditor'), {
+        toolbar: {
+          items: [
+            'heading',
+            '|',
+            'bold',
+            'italic',
+            'link',
+            'bulletedList',
+            'numberedList',
+            '|',
+            'indent',
+            'outdent',
+            '|',
+            'undo',
+            'redo',
+            '|',
+            'fontSize',
+            'fontFamily',
+            'fontColor',
+            'fontBackgroundColor',
+            '|',
+            'alignment',
+            'insertTable',
+            'mediaEmbed',
+            'blockQuote',
+            'codeBlock',
+            'horizontalLine',
+            '|',
+            'removeFormat',
+            'htmlEmbed',
+            'undo',
+            'redo'
+          ]
+        },
+        language: 'en',
+        image: {
+          toolbar: [
+            'imageTextAlternative',
+            '|',
+            'imageStyle:full',
+            'imageStyle:alignLeft',
+            'imageStyle:alignCenter',
+            'imageStyle:alignRight'
+          ],
+          styles: [
+            'full',
+            'alignLeft',
+            'alignCenter',
+            'alignRight'
+          ]
+        },
+        table: {
+          contentToolbar: [
+            'tableColumn',
+            'tableRow',
+            'mergeTableCells',
+            'tableCellProperties',
+            'tableProperties'
+          ]
+        },
+        licenseKey: '',
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  </script>
+@endpush
