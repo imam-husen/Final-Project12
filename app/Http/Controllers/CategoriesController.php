@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Categories;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class CategoriesController extends Controller
 {
@@ -62,6 +63,7 @@ class CategoriesController extends Controller
         
 
         $category->save();
+        Alert::success('Berhasil','Berhasail Menambahkan Categories Baru');
 
         return redirect('/categories');
     }
