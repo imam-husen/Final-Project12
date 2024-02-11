@@ -122,12 +122,13 @@
         @csrf
         <input type="hidden" value="{{$pertanyaanbyId->id}}" name="pertanyaan_id" >
         <div class="form-group">
-            <textarea type="text" class="form-control" name="jawaban" placeholder="Masukkan jawaban anda"></textarea>
+            <textarea type="text"  class="form-control" name="jawaban" placeholder="Masukkan jawaban anda"></textarea>
             @error('jawaban')
                 <div class="alert alert-danger">
                     {{ $message }}
                 </div>
             @enderror
+          
         </div>
         <div class="form-group">
             <label for="title">Gambar</label>
@@ -139,7 +140,10 @@
                 </div>
             @enderror
         <button type="submit" class="btn btn-primary">Tambah Jawaban</button>
+
+        
     </form>
 @endauth
     
+
 @endsection

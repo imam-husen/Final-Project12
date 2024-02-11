@@ -101,17 +101,28 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 
     
-    <script>
+    {{-- <script>
         toastr.options = {
             "positionClass": "toast-top-right",
             "preventDuplicates": true,
             "progressBar": true
         };
-    </script>
+    </script> --}}
 
     <!-- Template Javascript -->
     <script src="{{ asset('template/js/main.js') }}"></script>
     @stack('scripts')
+
+    @include('sweetalert::alert')
+
+
+    @push('scripts')
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha384-KyZXEAg3QhqLMpG8r+Knujsl5+2a9n0+76B8ZiytXL9Zs4vJ8QVp2K1uNDyJbLh6" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-Yf5yLuFTWtLB+1EQW3JzxJ45mh2d8uPPTaF53n+IhHDQFbBRKV3n+kJQk88p1gC9" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs5.min.js"></script>
+
+</script>
+@endpush
 </body>
 
 </html>
