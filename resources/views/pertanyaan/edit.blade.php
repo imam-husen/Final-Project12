@@ -22,7 +22,7 @@
     </div>
     <div class="form-group">
       <label>Content Pertanyaan</label><br>
-      <textarea class="form-control @error('content') is-invalid @enderror" name="content">{{ $pertanyaanbyId->content }}</textarea><br>
+      <textarea class="form-control @error('content') is-invalid @enderror" name="content" id="ckeditor">{{ $pertanyaanbyId->content }}</textarea><br>
       @error('content')
       <div class="alert alert-danger">{{ $message }} </div>
       @enderror
@@ -70,4 +70,77 @@
 
     
 @endsection
+
+@push('scripts')
+<script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js"></script>
+  <script>
+    ClassicEditor
+      .create(document.querySelector('#ckeditor'), {
+        toolbar: {
+          items: [
+            'heading',
+            '|',
+            'bold',
+            'italic',
+            'link',
+            'bulletedList',
+            'numberedList',
+            '|',
+            'indent',
+            'outdent',
+            '|',
+            'undo',
+            'redo',
+            '|',
+            'fontSize',
+            'fontFamily',
+            'fontColor',
+            'fontBackgroundColor',
+            '|',
+            'alignment',
+            'insertTable',
+            'mediaEmbed',
+            'blockQuote',
+            'codeBlock',
+            'horizontalLine',
+            '|',
+            'removeFormat',
+            'htmlEmbed',
+            'undo',
+            'redo'
+          ]
+        },
+        language: 'en',
+        image: {
+          toolbar: [
+            'imageTextAlternative',
+            '|',
+            'imageStyle:full',
+            'imageStyle:alignLeft',
+            'imageStyle:alignCenter',
+            'imageStyle:alignRight'
+          ],
+          styles: [
+            'full',
+            'alignLeft',
+            'alignCenter',
+            'alignRight'
+          ]
+        },
+        table: {
+          contentToolbar: [
+            'tableColumn',
+            'tableRow',
+            'mergeTableCells',
+            'tableCellProperties',
+            'tableProperties'
+          ]
+        },
+        licenseKey: '',
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  </script>
+@endpush
     
