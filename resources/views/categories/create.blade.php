@@ -6,7 +6,7 @@
   <div class="row g-7">
       <div class="col-sm-19 col-xl-9">
           <div class="bg-light rounded h-100 p-4">
-<form action="/categories" method="POST">
+  <form action="/categories" method="POST">
   @csrf
     <div class="form-group">
       <label>Nama</label>
@@ -18,7 +18,7 @@
     
     <button type="submit" class="btn btn-primary my-3">Submit</button>
 
-</form>
+  </form>
           </div>
       </div>
   </div>

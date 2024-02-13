@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Jawaban;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use RealRashid\SweetAlert\Facades\Alert;
 
 
 class JawabanController extends Controller
@@ -69,7 +70,9 @@ class JawabanController extends Controller
     $jawaban->pertanyaan_id = $request->pertanyaan_id;
 
     $jawaban->save();
+    Alert::success('Berhasil','Jawaban kamu berhasil disimpan');
     // toastr()->success('Jawaban kamu berhasil disimpan.', 'Berhasil!');
+    
     return redirect('/pertanyaan/'.$request->pertanyaan_id);
 
     }

@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Pertanyaan;
 use App\Models\Categories;
 use Illuminate\Support\Facades\File;
+use RealRashid\SweetAlert\Facades\Alert;
+
 
 class PertanyaanController extends Controller
 {
@@ -69,6 +71,7 @@ class PertanyaanController extends Controller
         $pertanyaan->gambar = $gambarName;
 
         $pertanyaan->save();
+        Alert::success('Berhasil','Berhasail Menambahkan Pertanyaan Baru');
 
         return redirect('/pertanyaan');
     }
@@ -136,6 +139,8 @@ class PertanyaanController extends Controller
         $pertanyaanbyId->category_id= $request['category_id'];
 
         $pertanyaanbyId->save();
+        Alert::success('Berhasil','Berhasail Update Pertanyaan Baru');
+        
         return redirect('/pertanyaan');
        
     }
@@ -156,6 +161,7 @@ class PertanyaanController extends Controller
 
         
         $pertanyaanbyId->delete();
+        Alert::success('Berhasil','Berhasail Menghapus Pertanyaan');
         return redirect('/pertanyaan');
     }
 }

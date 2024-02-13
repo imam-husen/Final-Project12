@@ -75,12 +75,15 @@
         @if ($item->gambar !== null)
         <img src="{{asset('images/jawaban/'. $item->gambar)}}" style="height: 100px" alt=""><br>
         @endif
+        
+        
+        
         @auth
+        <div class="row my-4">
+          <div class="col-auto">
+              <a href="/jawaban/{{$item->id}}" class="btn btn-info">Detail</a>
+          </div>
             @if(auth()->user()->id === $item->users_id)
-                <div class="row my-4">
-                    <div class="col-auto">
-                        <a href="/jawaban/{{$item->id}}" class="btn btn-info">Detail</a>
-                    </div>
                     <div class="col-auto">
                         <a href="/jawaban/{{ $item->id }}/edit" class="btn btn-info">Edit</a>
                     </div>
@@ -94,7 +97,8 @@
                 </div>
             @endif
         @endauth
-
+            
+        
         
       </div>
     </div>
@@ -128,7 +132,7 @@
                     {{ $message }}
                 </div>
             @enderror
-        <button type="submit" class="btn btn-primary">Tambah Jawaban</button>
+        <button type="submit" class="btn btn-primary my-3">Tambah Jawaban</button>
 
         
     </form>
