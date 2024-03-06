@@ -1,4 +1,5 @@
 @extends('layouts.master')
+
 @section('judul','Update Profil')
 
 @section('content')
@@ -7,24 +8,23 @@
         <div class="col-sm-19 col-xl-9">
             <div class="bg-light rounded h-100 p-4">
 
-                <form action="/profile/{{ $detailprofile->id }}" method="POST">
+                <form action="/profile/{{$detailprofile->id}}" method="post">
                     @csrf
                     @method('put')
 
                     <div class="form-group">
                         <label>Nama User</label>
-                        <input type="text" class="form-control" disabled value="{{ $detailprofile->user->name }}">
+                        <input type="text" class="form-control" disabled value="{{ optional($detailprofile->user)->name }}">
                     </div>
 
                     <div class="form-group">
                         <label>Email User</label>
-                        <input type="text" class="form-control" disabled value="{{ $detailprofile->user->email }}">
+                        <input type="text" class="form-control" disabled value="{{ optional($detailprofile->user)->email }}">
                     </div>
 
                     <div class="form-group">
                         <label>Bioadata</label>
-                        <textarea type="text" class="form-control @error('biodata') is-invalid @enderror"
-                            name="biodata">{{ $detailprofile->biodata }}</textarea>
+                        <textarea type="text" class="form-control @error('biodata') is-invalid @enderror" name="biodata"> {{ $detailprofile->biodata }} </textarea>
                         @error('biodata')
                         <div class="alert alert-danger">{{ $message }} </div>
                         @enderror
@@ -32,8 +32,7 @@
 
                     <div class="form-group">
                         <label>Umur</label>
-                        <input type="text" class="form-control @error('umur') is-invalid @enderror" name="umur"
-                            value="{{ $detailprofile->umur }}">
+                        <input type="text" class="form-control @error('umur') is-invalid @enderror" name="umur" value="{{ $detailprofile->umur }}">
                         @error('umur')
                         <div class="alert alert-danger">{{ $message }} </div>
                         @enderror
@@ -41,8 +40,7 @@
 
                     <div class="form-group">
                         <label>Alamat</label>
-                        <textarea type="text" class="form-control @error('alamat') is-invalid @enderror"
-                            name="alamat">{{ $detailprofile->alamat }}</textarea>
+                        <textarea type="text" class="form-control @error('alamat') is-invalid @enderror" name="alamat">{{ $detailprofile->alamat }}</textarea>
                         @error('alamat')
                         <div class="alert alert-danger">{{ $message }} </div>
                         @enderror

@@ -10,15 +10,17 @@ class ProfileController extends Controller
 {
     public function index() {
 
-        $iduser = Auth::id();
+        $iduser=Auth::id();
 
         $detailprofile = Profile::where('user_id',$iduser)->first();
+
         
-        return view('profile.index',['detailprofile'=>$detailprofile]);
+        
+        return view('profile.index',['detailprofile'=> $detailprofile]);
     }
 
 
-    public function update(Request $request,$id){
+    public function update(Request $request, $id){
         $request->validate([
         'biodata' => 'required',
         'umur' => 'required',
@@ -26,7 +28,7 @@ class ProfileController extends Controller
         ]);
 
         $profile = Profile::find($id);
-
+        
         $profile->biodata = $request->biodata;
         $profile->umur = $request->umur;
         $profile->alamat = $request->alamat;
